@@ -4,7 +4,7 @@ services:
   generator:
     build:
       context: .
-    image: aspnetcore/generator:multi
+    image: marekkacprzak/generator:multi
     ports:
       - "8080:80"
   mail:
