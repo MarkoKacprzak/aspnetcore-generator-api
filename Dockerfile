@@ -16,7 +16,7 @@ RUN dotnet test tests/tests.csproj
 
 #publish
 RUN dotnet publish api/api.csproj -o /publish
-ENTRYPOINT ["bash"]
+#ENTRYPOINT ["bash"]
 #Runtime Stage
 FROM microsoft/aspnetcore:2.0.0-preview1-jessie
 COPY --from=build-env /publish /publish
