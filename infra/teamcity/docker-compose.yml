@@ -11,7 +11,8 @@ services:
   ports:
    - 8111:8111
  teamcity-agent:
-  image: jetbrains/teamcity-agent:latest
+  image: marekkacprzak/teamcity-agent-with-compose:latest
+  build: ./agent
   volumes:
   - /var/run/docker.sock:/var/run/docker.sock
   environment:
