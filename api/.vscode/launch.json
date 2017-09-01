@@ -40,12 +40,12 @@
                 "pipeProgram": "/bin/bash",
                 "pipeCwd": "${workspaceRoot}",
                 "pipeArgs": ["-c",
-                    "docker exec -i integration_debug_1 /vsdbg/vsdbg --interpreter=mi"
+                    "docker exec -i api_debug_1 /vsdbg/vsdbg --interpreter=mi"
                 ],
                 "windows": {
                     "pipeProgram": "docker",
                     "pipeCwd": "${workspaceRoot}",
-                    "pipeArgs": ["exec -i integration_debug_1"],
+                    "pipeArgs": ["exec -i api_debug_1"],
                     "quoteArgs": false
                 }
             }
