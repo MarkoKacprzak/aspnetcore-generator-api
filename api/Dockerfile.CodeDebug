@@ -1,0 +1,15 @@
+FROM microsoft/aspnetcore-build:2.0.0-preview1
+WORKDIR /vsdbg
+RUN apt-get update && apt-get install -y --no-install-recommends unzip \
+&& rm -rf /var/lib/apt/lists/* \
+&& curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /vsdbg
+
+EXPOSE 80/tcp
+
+VOLUME /app
+
+WORKDIR /app
+
+ENTRYPOINT echo "Restoring packages..." && dotnet restore \
+       && echo "Building project..." && dotnet build \
+	&& echo "Ready for debugging." && sleep infinity 

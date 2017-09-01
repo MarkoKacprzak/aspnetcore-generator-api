@@ -1,0 +1,21 @@
+﻿version: '3.1'
+
+services:
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - "${PORT_MAILHOG-8025}:8025"
+  debug:
+    build:
+      context: ../api/.
+      dockerfile: Dockerfile.CodeDebug
+    volumes:
+      - ../api/:/app
+      - /app/obj
+      - /app/bin
+      - ~/.nuget:/root/.nuget
+      - /root/.nuget/packages/.tools
+    ports:
+      - ${PORT_DEBUGER-3000}:80
+    depends_on:
+      - mail
