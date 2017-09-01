@@ -7,10 +7,10 @@ services:
       - "${PORT_MAILHOG-8025}:8025"
   debug:
     build:
-      context: ../api/.
+      context: .
       dockerfile: Dockerfile.CodeDebug
     volumes:
-      - ../api/:/app
+      - .:/app
       - /app/obj
       - /app/bin
       - ~/.nuget:/root/.nuget
