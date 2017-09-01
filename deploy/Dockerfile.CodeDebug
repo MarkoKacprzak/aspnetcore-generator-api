@@ -1,4 +1,4 @@
-FROM microsoft/aspnetcore-build:2.0.0-preview1
+FROM my-registry:55000/gen:ci-${GENERATOR_BUILD_NUMBER-10}
 WORKDIR /vsdbg
 RUN apt-get update && apt-get install -y --no-install-recommends unzip \
 && rm -rf /var/lib/apt/lists/* \
@@ -6,10 +6,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends unzip \
 
 EXPOSE 80/tcp
 
-VOLUME /app
-
 WORKDIR /app
 
-ENTRYPOINT echo "Restoring packages..." && dotnet restore \
-       && echo "Building project..." && dotnet build \
-	&& echo "Ready for debugging." && sleep infinity 
+ENTRYPOINT echo "Ready for debugging." && sleep infinity 

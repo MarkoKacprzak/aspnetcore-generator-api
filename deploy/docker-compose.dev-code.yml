@@ -10,12 +10,6 @@ services:
       context: .
       dockerfile: Dockerfile.CodeDebug
     image: marekkacprzak/generator:debug
-    volumes:
-      - .:/app
-      - /app/obj
-      - /app/bin
-      - ~/.nuget:/root/.nuget
-      - /root/.nuget/packages/.tools
     ports:
       - ${PORT_DEBUGER-3000}:80
    # depends_on:
