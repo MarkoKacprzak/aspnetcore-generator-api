@@ -1,16 +1,25 @@
 ﻿version: '3.1'
 
 services:
- # mail:
- #   image: mailhog/mailhog
-  #  ports:
-  #    - "${PORT_MAILHOG-8025}:8025"
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - "${PORT_MAILHOG-8025}:8025"
   debug:
     build:
       context: .
       dockerfile: Dockerfile.Code
-    image: marekkacprzak/generator:debug
+    image: marekkacprzak/generator:code-debug
     ports:
       - ${PORT_DEBUGER-3000}:80
-   # depends_on:
-   #   - mail
+    depends_on:
+      - mail
+  vsdebug:
+    build:
+      context: .
+      dockerfile: Dockerfile.vsdebug
+    image: marekkacprzak/generator:vs-debug
+    ports:
+      - ${PORT_VS_DEBUGER-3030}:80
+    depends_on:
+      - mail
